@@ -7,21 +7,12 @@ namespace algo_4
         private readonly int _vector;
         private const int DefaultVectorSize = 10;
 
-        private void Resize()
+        protected override void Resize()
         {
-            var newArray = new T[Size + _vector];
+            Capacity += _vector;
+            var newArray = new T[Capacity];
             Array.Copy(InternalArray, newArray, Size);
             InternalArray = newArray;
-        }
-        
-        public override void Append(T item)
-        {
-            
-            if (Size == InternalArray.Length)
-                Resize();
-            
-            InternalArray[Size] = item;
-            Size++;
         }
         
         public VectorArray(int vector)

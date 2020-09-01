@@ -7,20 +7,22 @@ namespace algo_4
     public class SingleArray<T> : IArray<T>
     {
         protected T[] InternalArray;
-        
+        protected int Capacity = 0;
+
         public SingleArray()
         {
             Size = 0;
-            InternalArray = new T[Size];
+            Capacity = 1;
+            InternalArray = new T[Capacity];
         }
 
-        private void Resize()
+        protected virtual void Resize()
         {
-            var newArray = new T[Size + 1];
+            Capacity++;
+            var newArray = new T[Capacity];
             Array.Copy(InternalArray, newArray, Size);
 
             InternalArray = newArray;
-            Size += 1;
         }
 
         public int Size { get; protected set; }
@@ -32,10 +34,13 @@ namespace algo_4
 
         public virtual void Append(T item)
         {
-            Resize();
-            InternalArray[Size - 1] = item;
+            if (Size == Capacity)
+                Resize();
+
+            InternalArray[Size] = item;
+            Size++;
         }
-        
+
         public void AppendAt(T item, int index)
         {
             InternalArray[index] = item;
@@ -45,22 +50,18 @@ namespace algo_4
         {
             return InternalArray[index];
         }
-        
+
         public virtual T Remove(int index)
         {
-            var tmpArray = new T[Size - 1];
-
             var removed = InternalArray[index];
             Size--;
-            
-            Array.Copy(InternalArray, 0, tmpArray, 0, index);
-            Array.Copy(InternalArray, index + 1, tmpArray, index, Size - index);
-            
-            InternalArray = tmpArray;
+
+            Array.Copy(InternalArray, 0, InternalArray, 0, index);
+            Array.Copy(InternalArray, index + 1, InternalArray, index, Size - index);
 
             return removed;
         }
-        
+
         public override string ToString()
         {
             var str = "[";

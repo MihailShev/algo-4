@@ -7,21 +7,12 @@ namespace algo_4
         private readonly int _factor;
         private const int DefaultFactor = 2;
 
-        private void Resize()
+        protected override void Resize()
         {
-            var newArray = new T[Size * _factor + 1];
+            Capacity *= _factor;
+            var newArray = new T[Capacity];
             Array.Copy(InternalArray, newArray, Size);
             InternalArray = newArray;
-        }
-        
-        public override void Append(T item)
-        {
-            
-            if (Size == InternalArray.Length)
-                Resize();
-            
-            InternalArray[Size] = item;
-            Size++;
         }
         
         public FactorArray(int factor)
