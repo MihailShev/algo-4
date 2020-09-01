@@ -1,0 +1,6 @@
+C:\Project\algo-4\algo-4\bin\Debug\algo_4.exe
+C:\Project\algo-4\algo-4\bin\Debug\algo_4.pdb
+C:\Project\algo-4\algo-4\obj\Debug\algo-4.csprojAssemblyReference.cache
+C:\Project\algo-4\algo-4\obj\Debug\algo-4.csproj.CoreCompileInputs.cache
+C:\Project\algo-4\algo-4\obj\Debug\algo_4.exe
+C:\Project\algo-4\algo-4\obj\Debug\algo_4.pdb
