@@ -38,16 +38,18 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="FactorArray.cs" />
-        <Compile Include="IArray.cs" />
-        <Compile Include="MatrixArray.cs" />
-        <Compile Include="Program.cs" />
+        <Compile Include="Array\ArrayList.cs" />
+        <Compile Include="Array\FactorArray.cs" />
+        <Compile Include="Array\IArray.cs" />
+        <Compile Include="Array\MatrixArray.cs" />
+        <Compile Include="Array\Program.cs" />
+        <Compile Include="Array\SingleArray.cs" />
+        <Compile Include="Array\VectorArray.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="SingleArray.cs" />
-        <Compile Include="VectorArray.cs" />
     </ItemGroup>
     <ItemGroup>
       <Content Include=".gitignore" />
+      <Content Include="Array\Result.MD" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

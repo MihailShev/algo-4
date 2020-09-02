@@ -1,0 +1,9 @@
+﻿| № | TestValues | Single Array  | VerctorArray \(1000\) | VectorArray\(10 000\) | FactorArray\(2\) | FactorArray\(4\) | MatrixArray\(1000\) | MatrixArray\(10 000\) | ArrayList |
+|:---:|:----------:|:-------------:|:---------------------:|:---------------------:|:----------------:|:----------------:|:-------------------:|:---------------------:|:---------:|
+| 1 | 100 000    | 1905ms        | 8ms                   | 9ms                   | 2ms              | 4ms              | 4ms                 | 3ms                   | 1ms       |
+| 2 | 200 000    | 54140ms       | 58ms                  | 7ms                   | 3ms              | 2ms              | 7ms                 | 9ms                   | 9ms       |
+| 3 | 300 000    | Not performed | 205ms                 | 33ms                  | 4ms              | 4ms              | 11ms                | 11ms                  | 36ms      |
+| 4 | 1 000 000  | Not performed | 1903ms                | 209ms                 | 16ms             | 14ms             | 38ms                | 41ms                  | 81ms      |
+| 5 | 2 000 000  | Not performed | 10566ms               | 971ms                 | 29ms             | 27ms             | 79ms                | 81ms                  | 134ms     |
+| 6 | 3 000 000  | Not performed | 30562ms               | 2778ms                | 52ms             | 45ms             | 123ms               | 119ms                 | 224ms     |
+| 7 | 10 000 000 | Not performed | Not performed         | Not performed         | 155ms            | 134ms            | 402ms               | 396ms                 | 946ms     |
