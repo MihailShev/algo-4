@@ -8,9 +8,10 @@ namespace algo_4
     {
         public string Name;
         public IArray<int> Array;
-        public int TestCount;
+        public int TestAddCount;
+        public int TestDeleteCount;
     }
-    
+
     internal class Program
     {
         public static void Main(string[] args)
@@ -21,44 +22,51 @@ namespace algo_4
                 {
                     Array = new SingleArray<int>(),
                     Name = "Single array",
-                    TestCount = 2,
+                    TestAddCount = 3,
+                    TestDeleteCount = 3,
                 },
                 new TestItem()
                 {
                     Array = new VectorArray<int>(1000),
                     Name = "Vector array with vector value 1000",
-                    TestCount = 6
+                    TestDeleteCount = 4,
                 },
                 new TestItem()
                 {
                     Array = new VectorArray<int>(10000),
                     Name = "Vector array with vector value 10 000",
-                    TestCount = 6
+                    TestAddCount = 7,
+                    TestDeleteCount = 4,
                 },
                 new TestItem()
                 {
                     Array = new FactorArray<int>(2),
                     Name = "Factor array with factor value 2",
+                    TestDeleteCount = 4,
                 },
                 new TestItem()
                 {
                     Array = new FactorArray<int>(4),
                     Name = "Factor array with factor value 4",
+                    TestDeleteCount = 4,
                 },
                 new TestItem()
                 {
                     Array = new MatrixArray<int>(1000),
-                    Name = "Matrix array with line size 1000"
+                    Name = "Matrix array with line size 1000",
+                    TestDeleteCount = 3,
                 },
                 new TestItem()
                 {
                     Array = new MatrixArray<int>(10_000),
-                    Name = "Matrix array with line size 10 000"
+                    Name = "Matrix array with line size 10 000",
+                    TestDeleteCount = 3,
                 },
                 new TestItem()
                 {
                     Array = new ArrayList<int>(),
-                    Name = "List array"
+                    Name = "List array",
+                    TestDeleteCount = 4,
                 }
             };
             
@@ -67,27 +75,48 @@ namespace algo_4
 
         private static void Test(TestItem[] testItems)
         {
-            var testValues = new[]{100_000, 200_000, 300_000, 1000_000, 2000_000, 3000_000, 10000_000};
-           
+            var testValues = new[] {100_000, 200_000, 300_000, 1000_000, 2000_000, 3000_000, 10000_000};
+
 
             foreach (var item in testItems)
             {
-                var maxTestCount = item.TestCount > 0 ? item.TestCount : testValues.Length;
+                var maxTestCount = item.TestAddCount > 0 ? item.TestAddCount : testValues.Length;
                 Console.Write(" \n*** Test: " + item.Name + " ***\n");
-             
+
                 for (var i = 0; i < testValues.Length && i < maxTestCount; i++)
                 {
-                    Console.WriteLine("Test №: " + i);
+                    Console.WriteLine("Test №: " + (i + 1));
                     Console.WriteLine("Test values: " + testValues[i]);
-                    TestAppend(item.Array, testValues[i]);
+                    AddElements(item.Array, testValues[i]);
+                    if (i < item.TestDeleteCount)
+                    {
+                        RemoveElements(item.Array);
+                    }
+                    else
+                    {
+                        item.Array.Clear();
+                    }
                     Console.WriteLine("-----------------");
                 }
             }
         }
-
-        private static void TestAppend(IArray<int> array, int total)
+        
+        private static void RemoveElements(IArray<int> array)
         {
-           
+            var watch = new Stopwatch();
+            watch.Start();
+          
+            while (array.Size > 0)
+            {
+                var index = array.Size / 2;
+                array.Remove(index > 0 ? index : 0);
+            }
+            watch.Stop();
+            PrintExecutionTime("Delete", watch);
+        }
+
+        private static void AddElements(IArray<int> array, int total)
+        {
             var watch = new Stopwatch();
             watch.Start();
             for (var i = 0; i < total; i++)
@@ -96,10 +125,13 @@ namespace algo_4
             }
 
             watch.Stop();
-            var str = "Execution time: " + watch.ElapsedMilliseconds;
+            PrintExecutionTime("Add", watch);
+        }
+
+        private static void PrintExecutionTime(string operation, Stopwatch watch)
+        {
+            var str = operation +  " time: " + watch.ElapsedMilliseconds;
             Console.WriteLine(str);
         }
-        
-        
     }
 }

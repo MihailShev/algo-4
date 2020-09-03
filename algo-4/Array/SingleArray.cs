@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Linq;
 using System.Net.Sockets;
 
@@ -55,27 +56,40 @@ namespace algo_4
         {
             var removed = InternalArray[index];
             Size--;
-
             Array.Copy(InternalArray, 0, InternalArray, 0, index);
             Array.Copy(InternalArray, index + 1, InternalArray, index, Size - index);
 
             return removed;
         }
 
+        public virtual void Clear()
+        {
+            Capacity = 1;
+            Size = 0;
+            InternalArray = new T[Capacity];
+        }
+        
         public override string ToString()
         {
             var str = "[";
 
-            for (var i = 0; i < Size; i++)
+            if (Size > 0)
             {
-                if (i != Size - 1)
+                for (var i = 0; i < Size; i++)
                 {
-                    str += InternalArray[i] + ", ";
+                    if (i != Size - 1)
+                    {
+                        str += InternalArray[i] + ", ";
+                    }
+                    else
+                    {
+                        str += InternalArray[i] + "]";
+                    }
                 }
-                else
-                {
-                    str += InternalArray[i] + "]";
-                }
+            }
+            else
+            {
+                str += "]";
             }
 
             return str;
