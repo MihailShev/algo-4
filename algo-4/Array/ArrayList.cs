@@ -39,6 +39,11 @@
            return removed;
         }
 
+        public void Clear()
+        {
+            _internalArray.Clear();
+        }
+
         public override string ToString()
         {
             var str = "[";

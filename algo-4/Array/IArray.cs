@@ -7,9 +7,9 @@ namespace algo_4
         int Size { get;}
         bool IsEmpty();
         void Append(T item);
-        
         void AppendAt(T item, int index);
         T Get(int index);
         T Remove(int index);
+        void Clear();
     }
 }
