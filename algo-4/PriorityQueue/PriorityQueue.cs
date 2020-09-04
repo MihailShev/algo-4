@@ -10,7 +10,7 @@ namespace algo_4.PriorityQueue
 
         public PriorityQueue()
         {
-            _box = new SingleArray<IArray<T>>();
+            _box = new VectorArray<IArray<T>>();
         }
 
 
