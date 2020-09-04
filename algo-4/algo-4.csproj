@@ -42,9 +42,10 @@
         <Compile Include="Array\FactorArray.cs" />
         <Compile Include="Array\IArray.cs" />
         <Compile Include="Array\MatrixArray.cs" />
-        <Compile Include="Array\Program.cs" />
         <Compile Include="Array\SingleArray.cs" />
         <Compile Include="Array\VectorArray.cs" />
+        <Compile Include="PriorityQueue\PriorityQueue.cs" />
+        <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>
